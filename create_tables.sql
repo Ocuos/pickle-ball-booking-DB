@@ -2,7 +2,7 @@ CREATE TABLE User (
     UserID INTEGER PRIMARY KEY,
     Name TEXT NOT NULL,
     Email TEXT UNIQUE NOT NULL,
-    Phone TEXT
+    Phone TEXT NOT NULL
 );
 
 CREATE TABLE Court (
@@ -11,4 +11,23 @@ CREATE TABLE Court (
     Location TEXT NOT NULL,
     Description TEXT
 );
--- And so on for TimeSlot and Booking
+CREATE TABLE TimeSlot (
+    SlotID INTEGER PRIMARY KEY,
+    CourtID INTEGER FOREIGN KEY
+    Date DATETIME NOT NULL
+    StartTime TIME NOT NULL
+    EndTime TIME NOT NULL
+    Price DECIMAL (9,2) NOT NULL
+    Available BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (CourtID) REFERENCES Court(CourtID)
+);
+CREATE TABLE Booking (
+    BookingID TEXT PRIMARY KEY
+    UserID TEXT FOREIGN KEY
+    SlotID Text FOREIGN KEY
+    BookingTime DATETIME DEFAULT CURRENT_TIMESTAMP
+    FOREIGN KEY (UserID) REFERENCES User(UserID)
+    FOREIGN KEY (SlotID) REFERENCES TimeSlot(SlotID)
+);
+    -- And so on for TimeSlot and Booking
+    
