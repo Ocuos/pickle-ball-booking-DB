@@ -1,0 +1,6 @@
+CREATE TABLE User (
+    UserID INTEGER PRIMARY KEY,
+    Name TEXT NOT NULL,
+    Email TEXT UNIQUE NOT NULL,
+    Phone TEXT
+);
